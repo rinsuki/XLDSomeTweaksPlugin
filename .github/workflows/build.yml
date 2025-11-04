@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: macos-26
+    outputs:
+      version_human: ${{ steps.get_version.outputs.version_human }}
     steps:
     - run: sudo xcode-select -s /Applications/Xcode_26.0.app
     - run: brew install subversion
@@ -24,7 +26,8 @@ jobs:
       with:
         name: XLDSomeTweaksPlugin
         path: XLDSomeTweaksPlugin.zip
-    - run:
+    - id: get_version
+      run:
         echo "version_human=$(defaults read $(pwd)/build.xcarchive/Products/Library/Bundles/XLDSomeTweaksPlugin.bundle/Contents/Info CFBundleShortVersionString)" >> $GITHUB_OUTPUT
   create_draft_release:
     runs-on: ubuntu-24.04
