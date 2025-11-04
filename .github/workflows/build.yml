@@ -6,8 +6,9 @@ jobs:
   build:
     runs-on: macos-26
     steps:
-    - uses: actions/checkout@v5
     - run: xcode-select -s /Applications/Xcode_26.0.app
+    - uses: actions/checkout@v5
+    - run: xcrun agvtool new-version -all ${{ github.run_id }}
     - run: xcodebuild archive -scheme XLDSomeTweaksPlugin -archivePath build
     - uses: actions/upload-artifact@v4
       with:
