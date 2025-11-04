@@ -15,4 +15,4 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
         name: XLDSomeTweaksPlugin
-        path: build.xcarchive/Products/Library/Bundles/XLDSomeTweaksPlugin.bundle
+        path: build.xcarchive/Products/Library/Bundles
