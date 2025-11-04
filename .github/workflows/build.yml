@@ -47,7 +47,7 @@ jobs:
       env:
         GH_TOKEN: ${{ github.token }}
       run: |
-        VERSION="v${{ needs.build.outputs.full_version }}"
+        VERSION="v${{ needs.build.outputs.version_human }}"
         gh release create "$VERSION" \
           --draft \
           --title "$VERSION (${{ github.run_id }})" \
